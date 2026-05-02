@@ -94,7 +94,8 @@ def organize_by_month(folder_path: str):
 
             if target.exists():
                 if target.stat().st_size == item.stat().st_size:
-                    print(f"Skipped {item.name}: duplicate (same size)")
+                    item.unlink()
+                    print(f"Deleted duplicate: {item.name}")
                     continue
 
                 stem = item.stem
